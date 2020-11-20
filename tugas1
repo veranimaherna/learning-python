@@ -1,0 +1,51 @@
+kata = ["","one","two","three","four","five","six","seven","eight","nine"]
+
+def terbilang (n) :
+    if n < 10 :
+        return kata[n]
+    else :
+        if n == 10 :
+            return "ten"
+        elif n >= 1000000000 :
+            return terbilang(n // 1_000_000_000) + " billion " + terbilang(n % 1_000_000_000)
+        elif n >= 1_000_000 :
+            return terbilang(n // 1_000_000) + " million " + terbilang(n % 1_000_000)
+        elif n >= 1000 :
+            return terbilang(n // 1000) + " thousand " + terbilang(n % 1000) 
+        elif n >= 100 :
+            return terbilang(n // 100) + " hundred " + terbilang (n % 100) 
+        elif n >= 20 :
+            if n // 10 == 2 :
+                return "twenty" + terbilang(n % 10)
+            elif n // 10 == 3 :
+                return "thirty" + terbilang(n % 10)
+            elif n // 10 == 4 :
+                return "forty" + terbilang(n % 10)
+            elif n // 10  == 5 :
+                return "fifty" + terbilang(n % 10)
+            else :
+                return terbilang(n // 10) + ("ty " if (n//10)!=8 else "y ") + terbilang(n % 10)
+        elif n == 11 :
+            return "eleven"
+        elif n == 12 :
+            return "twelve"
+        elif n == 13 :
+            return "thirteen"
+        elif n == 15 :
+            return "fifteen"
+        else :
+            return terbilang (n % 10) + "teen"
+
+
+while True:
+    try :
+        n = int(input("Input angka? "))
+        print(f"{n} = {terbilang(n)}")
+    except :
+        print("Data yang diinput harus berupa angka...!!!")
+    print()
+    ulang = input("Ulang [y/n] ? ")
+    print()
+    if ulang.lower() == "n" :
+        break
+
